@@ -1,7 +1,11 @@
 <?php
     /**
      * Plugin: BitbucketRepFiles
-     * @author Olaf Trieschmann based on ideas of Igor Kromin (http://www.igorkromin.net)
+     * 
+     * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
+     * @author Olaf Trieschmann <develop@otri.de> 
+     * 
+     * Thanks to Igor Kromin's (http://www.igorkromin.net) plugin "GitLab Commits", which was used as a starting point!
      */
     
     if(!defined('DOKU_INC')) define('DOKU_INC',realpath(dirname(__FILE__).'/../../').'/');
@@ -12,11 +16,11 @@
         
         function getInfo() {
             return array('author' => 'Olaf Trieschmann',
-                         'email'  => 'me@someplace.com',
+                         'email'  => 'develop@otri.de',
                          'date'   => '2015-02-01′,
                          'name'   => 'BitbucketRepFiles Plugin',
-                         'desc'   => 'Shows last commits from GitLab',
-                         'url'    => 'http://www.igorkromin.net/');
+                         'desc'   => 'Dokuwiki plugin to show the files in a Bitbucket repository',
+                         'url'    => 'https://github.com/otriesch/itemtable/raw/master/bitbucketrepfiles.zip');
         }
         
         function getType(){ return ’substition'; }
@@ -33,7 +37,7 @@
         
         function render($mode, &$renderer, $data) {
             if($mode == 'xhtml'){
-                $pageurl = "*** GITLAB COMMITS URL ***";
+                $pageurl = "https://bitbucket.org/api/1.0/repositories/otrima/randt-ansible/branches/";
                 $ch=curl_init();
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($ch, CURLOPT_URL, $pageurl);
