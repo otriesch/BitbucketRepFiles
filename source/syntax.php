@@ -12,14 +12,14 @@ if(!defined('DOKU_INC')) die();
 
 if(!defined('DOKU_INC')) define('DOKU_INC',realpath(dirname(__FILE__).'/../../').'/');
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
-require_once(DOKU_PLUGIN.’syntax.php');
+require_once(DOKU_PLUGIN.'syntax.php');
     
 class syntax_plugin_bitbucketrepfiles extends DokuWiki_Syntax_Plugin {
     
     function getInfo() {
         return array('author' => 'Olaf Trieschmann',
                      'email'  => 'develop@otri.de',
-                     'date'   => '2015-02-01′,
+                     'date'   => '2015-02-01',
                      'name'   => 'BitbucketRepFiles Plugin',
                      'desc'   => 'Dokuwiki plugin to show the files in a Bitbucket repository',
                      'url'    => 'https://github.com/otriesch/itemtable/raw/master/bitbucketrepfiles.zip');
