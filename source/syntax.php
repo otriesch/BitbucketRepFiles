@@ -37,21 +37,21 @@ class syntax_plugin_bitbucketrepfiles extends DokuWiki_Syntax_Plugin {
     }
     
     public function handle($match, $state, $pos, Doku_Renderer $handler){
-		$start = strlen('{{bitbucketrepfiles>');
-		$end = -2;
-
-		$params = substr($match, $start, $end);
-		$params = preg_replace('/\s{2,}/', '', $params);
-		$params = preg_replace('/\s[=]/', '=', $params);
-		$params = preg_replace('/[=]\s/', '=', $params);
-
-		$data = array();
-		foreach(explode('&', $params) as $param)
-		{
-			$val = explode('=', $param);
-			$data[$val[0]] = $val[1];
-		}
-        return $return;
+	$start = strlen('{{bitbucketrepfiles>');
+	$end = -2;
+	
+	$params = substr($match, $start, $end);
+	$params = preg_replace('/\s{2,}/', '', $params);
+	$params = preg_replace('/\s[=]/', '=', $params);
+	$params = preg_replace('/[=]\s/', '=', $params);
+	
+	$data = array();
+	foreach(explode('&', $params) as $param)
+	{
+		$val = explode('=', $param);
+		$data[$val[0]] = $val[1];
+	}
+       return $return;
 
 //        return array($data, $state, $pos);
     }
@@ -66,8 +66,8 @@ class syntax_plugin_bitbucketrepfiles extends DokuWiki_Syntax_Plugin {
      */
     public function render($mode, Doku_Renderer $renderer, $data) {
         if($mode == 'xhtml') && isset($data['URL']){
-            $pageurl = $data['URL']
-//            $pageurl = "https://bitbucket.org/api/1.0/repositories/otrima/randt-ansible/branches/";
+//            $pageurl = $data['URL']
+            $pageurl = "https://bitbucket.org/api/1.0/repositories/otrima/randt-ansible/branches/";
             $ch=curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_URL, $pageurl);
@@ -75,11 +75,13 @@ class syntax_plugin_bitbucketrepfiles extends DokuWiki_Syntax_Plugin {
             curl_close($ch);
             
             $json = new JSON();
-            $array  = $json->decode($html);
+            $array = $json->decode($html);
+            $array = $val->master;
+            $array = $val->files;
             
-            $renderer->doc .= '<table class="pagelist" style="width:725px"><tr><th class="page">ID</th><th class="page">Author</th><th class="page">Title</th><th class="date">Date</th></tr>';
+            $renderer->doc .= '<table class="pagelist" style="width:725px"><tr><th class="page">File</th></tr>';
             foreach($array as &$val) {
-                $renderer->doc .= '<tr><td class="desc">' . $val->short_id . '</td><td class="desc">' . $val->author_name . '</td><td class="desc">' . $val->title . '</td><td class="date">' . $val->created_at . '</td></tr>';
+                $renderer->doc .= '<tr><td class="desc">' . $val->file '</tr>';
             }
             $renderer->doc .= '</table>';
             
