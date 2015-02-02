@@ -1,0 +1,8 @@
+# General Plugin Info do not edit
+
+author Olaf Trieschmann
+email  develop@otri.de
+date   2015-02-01
+name   BitbucketRepFile Plugin
+desc   Dokuwiki plugin to show the files in a Bitbucket repository
+url    https://github.com/otriesch/itemtable/raw/master/bitbucketrepfiles.zip
