@@ -5,7 +5,9 @@
  * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author Olaf Trieschmann <develop@otri.de> 
  * 
- * Thanks to Igor Kromin's (http://www.igorkromin.net) plugin "GitLab Commits", which was used as a starting point!
+ * Thanks to Igor Kromin's plugin "GitLab Commits"
+ * (http://www.igorkromin.net/index.php/2013/04/27/adding-gitlab-commits-to-a-dokuwiki-page-a-very-rough-plugin/), 
+ * which was used as a starting point!
  */
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
